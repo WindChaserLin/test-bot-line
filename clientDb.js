@@ -1,4 +1,4 @@
-const MongoClient = require('mongodb').MongoClient;
+﻿const MongoClient = require('mongodb').MongoClient;
 let db;
 MongoClient.connect("mongodb://clientuser:clientpassword@ds217898.mlab.com:17898/jasondb1", 
   async function(err, client) {
@@ -57,7 +57,7 @@ async function setUserIntent(userId, text){
         if(aryIntent.length==2) {msgGroup.push({type: "text", text: "你問的好像都是老師作業中規定的問題耶。該不會...你就是老師本人吧... 😱"});}
         if(aryIntent.length==3) {msgGroup.push({type: "text", text: `越來越肯定你就是老師了,你已經問了${aryIntent.length+1}次作業規定的問題了... 🤔`});}
         if(aryIntent.length==4) {msgGroup.push({type: "text", text: `這是第${aryIntent.length+1}次了，你應該就是老師...吧...`});}
-        if(aryIntent.length==5) {msgGroup.push({type: "text", text: `😊 老師您好。第${aryIntent.length+1}次了，記得我的作業要給滿分喔！... 💯`});}
+        if(aryIntent.length>=5) {msgGroup.push({type: "text", text: `😊 老師您好。第${aryIntent.length+1}次了，記得我的作業要給滿分喔！... 💯`});}
     }
     tblQuestion.insert({ userId, intent ,"question": text });
     return msgGroup;
